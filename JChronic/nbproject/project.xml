@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.apisupport.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
+            <code-name-base>com.mdimension.jchronic</code-name-base>
+            <suite-component/>
+            <module-dependencies/>
+            <public-packages>
+                <package>com.mdimension.jchronic</package>
+                <package>com.mdimension.jchronic.handlers</package>
+                <package>com.mdimension.jchronic.numerizer</package>
+                <package>com.mdimension.jchronic.repeaters</package>
+                <package>com.mdimension.jchronic.tags</package>
+                <package>com.mdimension.jchronic.utils</package>
+            </public-packages>
+        </data>
+    </configuration>
+</project>

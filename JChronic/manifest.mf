@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: com.mdimension.jchronic
+OpenIDE-Module-Localizing-Bundle: com/mdimension/jchronic/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
