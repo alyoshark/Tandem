@@ -13,7 +13,7 @@ enum TaskComparator implements Comparator<Task> {
 
         @Override
         public int compare(Task o1, Task o2) {
-            return (int) (o1.getDue().getTime() - o2.getDue().getTime());
+            return (int) (o1.getDue().getTime().getTime() - o2.getDue().getTime().getTime());
         }
     },
     PRIORITY_SORT {
@@ -23,7 +23,7 @@ enum TaskComparator implements Comparator<Task> {
             return (o1.getPriority().getVal() - o2.getPriority().getVal());
         }
     };
-    
+
     public static Comparator<Task> ascending(final Comparator<Task> other) {
         return new Comparator<Task>() {
 

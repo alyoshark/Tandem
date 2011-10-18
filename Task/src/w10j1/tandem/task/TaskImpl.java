@@ -2,7 +2,7 @@ package w10j1.tandem.task;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Date;
+import java.util.Calendar;
 import w10j1.tandem.task.api.Task;
 
 /**
@@ -14,7 +14,8 @@ public class TaskImpl implements Task {
     private static final boolean UNDONE = false;
     private static final boolean DONE = true;
     
-    private Date due = new Date();
+    private Calendar due = Calendar.getInstance();
+
     private String desc = "";
     private boolean status = UNDONE;
     private Priority priority;
@@ -24,7 +25,7 @@ public class TaskImpl implements Task {
         this(null, "", UNDONE, Priority.LOW);
     }
     
-    public TaskImpl(Date due, String desc, boolean status, Priority prio) {
+    public TaskImpl(Calendar due, String desc, boolean status, Priority prio) {
         this.due = due;
         this.desc = desc;
         this.status = status;
@@ -38,7 +39,7 @@ public class TaskImpl implements Task {
     }
 
     @Override
-    public Date getDue() {
+    public Calendar getDue() {
         return this.due;
     }
 
@@ -57,8 +58,8 @@ public class TaskImpl implements Task {
         this.status = status;
     }
     @Override
-    public void setDue(Date due) {
-        Date old = this.due;
+    public void setDue(Calendar due) {
+        Calendar old = this.due;
         this.due = due;
         this.pcs.firePropertyChange(PROP_DUE, old, due);
     }

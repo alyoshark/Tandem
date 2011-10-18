@@ -1,7 +1,7 @@
 package w10j1.tandem.task.api;
 
 import java.beans.PropertyChangeListener;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -25,13 +25,13 @@ public interface Task {
 
     public String getDesc();
 
-    public Date getDue();
+    public Calendar getDue();
 
     public boolean getStatus();
 
     public Priority getPriority();
 
-    public void setDue(Date due);
+    public void setDue(Calendar due);
 
     public void setStatus(boolean status);
 
