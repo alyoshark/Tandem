@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: w10j1.tandem.commandprocessor
+OpenIDE-Module-Localizing-Bundle: w10j1/tandem/commandprocessor/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
