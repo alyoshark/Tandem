@@ -18,7 +18,7 @@ public class DataKeeperImpl implements DataKeeper {
 
     public ArrayList<Task> taskList;
     public ArrayList<Task> searchList;
-    
+
     public DataKeeperImpl() {
         taskList = new ArrayList<Task>();
     }
@@ -49,6 +49,7 @@ public class DataKeeperImpl implements DataKeeper {
 
     @Override
     public String memToFile() {
+        Collections.sort(taskList, ascending(DUE_SORT));
         StringBuilder sb = new StringBuilder();
         for (Task t : taskList) {
             sb.append(t.toString());
@@ -58,6 +59,11 @@ public class DataKeeperImpl implements DataKeeper {
 
     @Override
     public ArrayList<Task> fileToMem(String fromFile) {
+        // TODO
+        // Create a new Calendar instance with the info provided and description string.
+        // Leave aside the done/undone and priority first.
+        // Suppose the record is still stored in the same way in side the data file as 0.1 version.
+        // dd|mm|yyyy|hh|mm|description..
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
