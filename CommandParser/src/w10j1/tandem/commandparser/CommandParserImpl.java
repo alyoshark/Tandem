@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package w10j1.tandem.commandparser;
 
 import w10j1.tandem.commandparser.api.CommandParser;
@@ -16,7 +12,7 @@ import java.util.regex.Pattern;
  */
 public class CommandParserImpl implements CommandParser {
 
-    public final String COMMAND_ISO_STR = "^([aders])\\s(.*)";
+    public final String COMMAND_ISO_STR = "^([adersu])\\s(.*)";
     public final Pattern COMMAND_ISO = Pattern.compile(COMMAND_ISO_STR, Pattern.CASE_INSENSITIVE);
     public Calendar due;
     public String request = "";

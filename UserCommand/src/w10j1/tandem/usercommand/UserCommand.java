@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package w10j1.tandem.usercommand;
 
 import w10j1.tandem.commandparser.api.CommandParser;
@@ -33,22 +29,31 @@ public class UserCommand {
             case 'a':
                 this.cpro.add(this.cpar.getDue(), this.command);
                 break;
-            case 'd':
             case 's':
                 this.cpro.search(this.command);
                 break;
+            case 'u':
+                this.cpro.undo();
+                break;
             case 'e':
             case 'r':
+            case 'd':
                 if (isAfterSearch) {
                     if (this.request.charAt(0) == 'e') {
                         this.cpro.edit(this.command);
                     } else if (this.request.charAt(0) == 'r') {
                         this.cpro.remove(this.command);
+                    } else if (this.request.charAt(0) == 'd') {
+                        this.cpro.setDone(this.command);
                     }
                 } else {
-                    System.out.println("Please perform a search first: s {keywords/date}");
+                    // System.out.println("Please perform a search first: s {keywords/date}");
+                    // Should be printed in the GUI not the console...
                 }
                 break;
+            default:
+                // Print an error message in the GUI.
+                // May be done by throwing an exception.
         }
     }
 }
