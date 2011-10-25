@@ -6,9 +6,9 @@ package w10j1.tandem.datakeeper;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import w10j1.tandem.task.api.Task;
-import w10j1.tandem.datakeeper.api.DataKeeper;
 import static w10j1.tandem.datakeeper.TaskComparator.*;
+import w10j1.tandem.datakeeper.api.DataKeeper;
+import w10j1.tandem.task.api.Task;
 
 /**
  *
@@ -74,5 +74,33 @@ public class DataKeeperImpl implements DataKeeper {
             sb.append(t.getDesc()).append("\r\n");
         }
         return sb.toString();
+    }
+
+    @Override
+    public void addTask(Task task) {
+        taskList.add(task);
+    }
+
+    @Override
+    public void searchTask(String keywords) {
+        String[] kw = keywords.split("\\s");
+        for (Task task: taskList) {
+            boolean hasAllWords = true;
+            for (String word: kw) {
+                if (!task.getDesc().contains(word)) {
+                    hasAllWords = false;
+                    break;
+                }
+            }
+            if (hasAllWords) {
+                searchList.add(task);
+            }
+        }
+    }
+
+    @Override
+    public void removeTask(Task task) {
+        searchList.remove(task);
+        taskList.remove(task);
     }
 }
