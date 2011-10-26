@@ -1,14 +1,20 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * To change this template, choose Tools | Templates and open the template in
+ * the editor.
  */
 package w10j1.tandem.datakeeper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static w10j1.tandem.datakeeper.TaskComparator.*;
 import w10j1.tandem.datakeeper.api.DataKeeper;
 import w10j1.tandem.task.api.Task;
+import w10j1.tandem.task.TaskImpl;
 
 /**
  *
@@ -18,6 +24,8 @@ public class DataKeeperImpl implements DataKeeper {
 
     public ArrayList<Task> taskList;
     public ArrayList<Task> searchList;
+    
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
     public DataKeeperImpl() {
         taskList = new ArrayList<Task>();
@@ -58,13 +66,19 @@ public class DataKeeperImpl implements DataKeeper {
     }
 
     @Override
-    public ArrayList<Task> fileToMem(String fromFile) {
-        // TODO
-        // Create a new Calendar instance with the info provided and description string.
-        // Leave aside the done/undone and priority first.
-        // Suppose the record is still stored in the same way in side the data file as 0.1 version.
-        // dd|mm|yyyy|hh|mm|description..
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void fileToMem(String fromFile) {
+        String[] tempList = fromFile.split("\r\n");
+        for (String task : tempList) {
+            // Getting due
+            String[] taskDetail = task.split("\\|");
+            Calendar time = Calendar.getInstance();
+            try {
+                time.setTime(formatter.parse(taskDetail[0]));
+            } catch (ParseException ex) {
+                Logger.getLogger(DataKeeperImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.taskList.add(new TaskImpl(time, taskDetail[1]));
+        }
     }
 
     @Override
@@ -84,9 +98,9 @@ public class DataKeeperImpl implements DataKeeper {
     @Override
     public void searchTask(String keywords) {
         String[] kw = keywords.split("\\s");
-        for (Task task: taskList) {
+        for (Task task : taskList) {
             boolean hasAllWords = true;
-            for (String word: kw) {
+            for (String word : kw) {
                 if (!task.getDesc().contains(word)) {
                     hasAllWords = false;
                     break;

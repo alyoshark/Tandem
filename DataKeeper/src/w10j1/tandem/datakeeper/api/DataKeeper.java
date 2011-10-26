@@ -19,6 +19,8 @@ public interface DataKeeper {
 
     public String memToFile();
     
+    public void fileToMem(String fromFile);
+    
     public String resultString();
     
     public void addTask(Task task);
@@ -26,6 +28,4 @@ public interface DataKeeper {
     public void searchTask(String keywords);
     
     public void removeTask(Task task);
-
-    public ArrayList<Task> fileToMem(String fromFile);
 }
