@@ -2,6 +2,7 @@ package w10j1.tandem.task;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import w10j1.tandem.task.api.Task;
 
@@ -21,8 +22,16 @@ public class TaskImpl implements Task {
     private Priority priority;
     private PropertyChangeSupport pcs;
     
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+    
     public TaskImpl() {
         this(null, "", UNDONE, Priority.LOW);
+    }
+    
+    public TaskImpl(Calendar due, String desc) {
+        this.due = due;
+        this.desc = desc;
+        this.pcs = new PropertyChangeSupport(this);
     }
     
     public TaskImpl(Calendar due, String desc, boolean status, Priority prio) {
@@ -74,8 +83,8 @@ public class TaskImpl implements Task {
 
     @Override
     public String toString() {
-        return this.getDue().toString() + "|" + this.getDesc() + "|" + this.getPriority() +
-                "|" + (this.getStatus() ? "Done" : "Undone") + "\r\n";
+        return formatter.format(this.getDue()) + "|" + this.getDesc() /* + "|" + this.getPriority() +
+                "|" + (this.getStatus() ? "Done" : "Undone") */ + "\r\n";
     }
 
     @Override

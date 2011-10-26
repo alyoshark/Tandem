@@ -1,9 +1,10 @@
 package w10j1.tandem.usercommand;
 
-import w10j1.tandem.commandparser.api.CommandParser;
-import w10j1.tandem.commandprocessor.api.CommandProcessor;
-import w10j1.tandem.commandprocessor.CommandProcessorImpl;
 import w10j1.tandem.commandparser.CommandParserImpl;
+import w10j1.tandem.commandparser.api.CommandParser;
+import w10j1.tandem.commandprocessor.CommandProcessorImpl;
+import w10j1.tandem.commandprocessor.api.CommandProcessor;
+import w10j1.tandem.task.TaskImpl;
 
 /**
  *
@@ -27,7 +28,7 @@ public class UserCommand {
     public void execute() {
         switch (this.request.charAt(0)) {
             case 'a':
-                this.cpro.add(this.cpar.getDue(), this.command);
+                this.cpro.add(new TaskImpl(this.cpar.getDue(), this.command));
                 break;
             case 's':
                 this.cpro.search(this.command);

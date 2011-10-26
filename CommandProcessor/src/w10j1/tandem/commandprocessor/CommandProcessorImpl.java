@@ -2,6 +2,10 @@ package w10j1.tandem.commandprocessor;
 
 import java.util.Calendar;
 import w10j1.tandem.commandprocessor.api.CommandProcessor;
+import w10j1.tandem.datakeeper.DataKeeperImpl;
+import w10j1.tandem.datakeeper.api.DataKeeper;
+import w10j1.tandem.fileoprator.FileOperator;
+import w10j1.tandem.task.api.Task;
 
 /**
  *
@@ -9,9 +13,14 @@ import w10j1.tandem.commandprocessor.api.CommandProcessor;
  */
 public class CommandProcessorImpl implements CommandProcessor {
 
+    public FileOperator fo = new FileOperator();
+    public DataKeeper dk = new DataKeeperImpl();
+    
     @Override
-    public void add(Calendar due, String command) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void add(Task task) {
+        this.dk.addTask(task);
+        String updateList = dk.memToFile();
+        this.fo.writeFile(updateList);
     }
 
     @Override
@@ -26,7 +35,7 @@ public class CommandProcessorImpl implements CommandProcessor {
 
     @Override
     public void remove(String command) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.dk.removeTask(((DataKeeperImpl) this.dk).searchList.get(Integer.parseInt(command)));
     }
 
     @Override

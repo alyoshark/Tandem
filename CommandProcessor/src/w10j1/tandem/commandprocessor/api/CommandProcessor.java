@@ -1,6 +1,7 @@
 package w10j1.tandem.commandprocessor.api;
 
 import java.util.Calendar;
+import w10j1.tandem.task.api.Task;
 
 /**
  *
@@ -8,7 +9,7 @@ import java.util.Calendar;
  */
 public interface CommandProcessor {
 
-    public void add(Calendar due, String command);
+    public void add(Task task);
 
     public void search(String command);
 
