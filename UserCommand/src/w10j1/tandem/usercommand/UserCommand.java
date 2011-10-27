@@ -5,6 +5,7 @@ import w10j1.tandem.commandparser.api.CommandParser;
 import w10j1.tandem.commandprocessor.CommandProcessorImpl;
 import w10j1.tandem.commandprocessor.api.CommandProcessor;
 import w10j1.tandem.task.TaskImpl;
+import w10j1.tandem.task.api.Task;
 
 /**
  *
@@ -33,16 +34,17 @@ public class UserCommand {
     public void execute() {
         switch (this.request.charAt(0)) {
             case 'a':
-                this.cpro.add(this.cpar.getDue(), this.command);
-                executionResultStr = ""; //stub
+                Task tempTask = new TaskImpl(this.cpar.getDue(), this.command);
+                this.cpro.add(tempTask);
+                executionResultStr = tempTask.toString() + " is added!";
                 break;
             case 's':
                 this.cpro.search(this.command);
-                executionResultStr =""; //stub
+                executionResultStr ="";
                 break;
             case 'u':
                 this.cpro.undo();
-                executionResultStr =""; //stub
+                executionResultStr ="";
                 break;
             case 'e':
             case 'r':
@@ -50,13 +52,13 @@ public class UserCommand {
                 if (isAfterSearch) {
                     if (this.request.charAt(0) == 'e') {
                         this.cpro.edit(this.command);
-                        executionResultStr =""; //stub
+                        executionResultStr ="";
                     } else if (this.request.charAt(0) == 'r') {
                         this.cpro.remove(this.command);
-                        executionResultStr = ""; //stub
+                        executionResultStr = "";
                     } else if (this.request.charAt(0) == 'd') {
                         this.cpro.setDone(this.command);
-                        executionResultStr = ""; //stub
+                        executionResultStr = "";
                     }
                 } else {
                     // System.out.println("Please perform a search first: s {keywords/date}");

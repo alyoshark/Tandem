@@ -4,7 +4,7 @@
  */
 
 /*
- * TaskEditorFrame.java
+ * TaskEditorPanel.java
  *
  * Created on Oct 27, 2011, 1:07:41 AM
  */
@@ -18,15 +18,15 @@ import w10j1.tandem.usercommand.UserCommand;
  *
  * @author WIN7
  */
-public class TaskEditorFrame extends javax.swing.JFrame {
+public class TaskEditorPanel extends javax.swing.JFrame {
 
     private String inputStr;
     private String outputStr;
         
     private UserCommand userCommand;
             
-    /** Creates new form TaskEditorFrame */
-    public TaskEditorFrame() {
+    /** Creates new form TaskEditorPanel */
+    public TaskEditorPanel() {
         initComponents();
         ResultTextArea.setEditable(false);
         inputStr = outputStr = "";
@@ -143,13 +143,13 @@ public class TaskEditorFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -157,7 +157,7 @@ public class TaskEditorFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new TaskEditorFrame().setVisible(true);
+                new TaskEditorPanel().setVisible(true);
             }
         });
     }

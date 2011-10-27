@@ -1,6 +1,7 @@
 package w10j1.tandem.commandprocessor;
 
-import java.util.Calendar;
+import com.mdimension.jchronic.Chronic;
+import com.mdimension.jchronic.utils.Span;
 import w10j1.tandem.commandprocessor.api.CommandProcessor;
 import w10j1.tandem.datakeeper.DataKeeperImpl;
 import w10j1.tandem.datakeeper.api.DataKeeper;
@@ -25,7 +26,17 @@ public class CommandProcessorImpl implements CommandProcessor {
 
     @Override
     public void search(String command) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            Span interval = Chronic.parse(command);
+            dk.searchTask(interval);
+        } catch (Exception e0) {
+            // Not a processible as an interval.
+        }
+        try {
+            dk.searchTask(command);
+        } catch (Exception e1) {
+            throw e1;
+        }
     }
 
     @Override
