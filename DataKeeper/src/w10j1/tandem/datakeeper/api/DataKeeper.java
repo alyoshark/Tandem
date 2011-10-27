@@ -1,6 +1,6 @@
 package w10j1.tandem.datakeeper.api;
 
-import java.util.ArrayList;
+import com.mdimension.jchronic.utils.Span;
 import w10j1.tandem.task.api.Task;
 
 /**
@@ -26,6 +26,9 @@ public interface DataKeeper {
     public void addTask(Task task);
     
     public void searchTask(String keywords);
+    
+    // Perform a seach by a given interval of time.
+    public void searchTask(Span interval);
     
     public void removeTask(Task task);
 }
