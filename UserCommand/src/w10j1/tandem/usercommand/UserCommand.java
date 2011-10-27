@@ -17,6 +17,7 @@ public class UserCommand {
     public String request = "";
     public String command = "";
     private boolean isAfterSearch = false;
+    String executionResultStr;
 
     public UserCommand(String input) {
         UserCommand.cpar.readRawInput(input);
@@ -25,16 +26,23 @@ public class UserCommand {
         this.command = UserCommand.cpar.getCommand();
     }
 
+    public String getExecutionResults(){
+        return executionResultStr;
+    }
+    
     public void execute() {
         switch (this.request.charAt(0)) {
             case 'a':
-                this.cpro.add(new TaskImpl(this.cpar.getDue(), this.command));
+                this.cpro.add(this.cpar.getDue(), this.command);
+                executionResultStr = ""; //stub
                 break;
             case 's':
                 this.cpro.search(this.command);
+                executionResultStr =""; //stub
                 break;
             case 'u':
                 this.cpro.undo();
+                executionResultStr =""; //stub
                 break;
             case 'e':
             case 'r':
@@ -42,10 +50,13 @@ public class UserCommand {
                 if (isAfterSearch) {
                     if (this.request.charAt(0) == 'e') {
                         this.cpro.edit(this.command);
+                        executionResultStr =""; //stub
                     } else if (this.request.charAt(0) == 'r') {
                         this.cpro.remove(this.command);
+                        executionResultStr = ""; //stub
                     } else if (this.request.charAt(0) == 'd') {
                         this.cpro.setDone(this.command);
+                        executionResultStr = ""; //stub
                     }
                 } else {
                     // System.out.println("Please perform a search first: s {keywords/date}");
