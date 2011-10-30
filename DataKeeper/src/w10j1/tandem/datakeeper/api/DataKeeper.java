@@ -31,4 +31,6 @@ public interface DataKeeper {
     public void searchTask(Span interval);
     
     public void removeTask(Task task);
+    
+    public void undo();
 }

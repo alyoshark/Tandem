@@ -40,6 +40,7 @@
                 </dependency>
             </module-dependencies>
             <public-packages>
+                <package>w10j1.tandem.commandprocessor</package>
                 <package>w10j1.tandem.commandprocessor.api</package>
             </public-packages>
         </data>

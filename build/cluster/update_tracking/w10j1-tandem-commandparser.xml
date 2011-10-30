@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="w10j1.tandem.commandparser">
-    <module_version install_time="1319109980960" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1319958728610" last="true" origin="installer" specification_version="1.0">
         <file crc="2118868652" name="config/Modules/w10j1-tandem-commandparser.xml"/>
         <file crc="1719612861" name="modules/ext/junit.jar"/>
-        <file crc="2651959350" name="modules/w10j1-tandem-commandparser.jar"/>
+        <file crc="295513306" name="modules/ext/org-netbeans-modules-junit.jar"/>
+        <file crc="3561207480" name="modules/w10j1-tandem-commandparser.jar"/>
     </module_version>
 </module>

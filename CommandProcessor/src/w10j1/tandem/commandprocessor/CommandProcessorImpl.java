@@ -56,6 +56,7 @@ public class CommandProcessorImpl implements CommandProcessor {
 
     @Override
     public void undo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        dk.undo();
+        fo.writeFile(dk.memToFile());
     }
 }

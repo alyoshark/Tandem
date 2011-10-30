@@ -19,8 +19,19 @@ public class UserCommand {
     public String command = "";
     private boolean isAfterSearch = false;
     String executionResultStr;
+    
+    public UserCommand() {
+        // Doing nothing and should not be called without initCommand();
+    }
 
     public UserCommand(String input) {
+        UserCommand.cpar.readRawInput(input);
+        UserCommand.cpar.setRequest();
+        this.request = UserCommand.cpar.getRequest();
+        this.command = UserCommand.cpar.getCommand();
+    }
+    
+    public void initCommand(String input) {
         UserCommand.cpar.readRawInput(input);
         UserCommand.cpar.setRequest();
         this.request = UserCommand.cpar.getRequest();
@@ -32,31 +43,31 @@ public class UserCommand {
     }
     
     public void execute() {
-        switch (this.request.charAt(0)) {
-            case 'a':
+        switch (this.request) {
+            case "a":
                 Task tempTask = new TaskImpl(this.cpar.getDue(), this.command);
                 this.cpro.add(tempTask);
                 executionResultStr = tempTask.toString() + " is added!";
                 break;
-            case 's':
+            case "s":
                 this.cpro.search(this.command);
                 executionResultStr ="";
                 break;
-            case 'u':
+            case "u":
                 this.cpro.undo();
-                executionResultStr ="";
+                executionResultStr = "Last operation just canceled.";
                 break;
-            case 'e':
-            case 'r':
-            case 'd':
+            // case "e":
+            case "r":
+            case "d":
                 if (isAfterSearch) {
-                    if (this.request.charAt(0) == 'e') {
+                    /*if (this.request.compareTo("e") == 0) {
                         this.cpro.edit(this.command);
                         executionResultStr ="";
-                    } else if (this.request.charAt(0) == 'r') {
+                    } else*/ if (this.request.compareTo("r") == 0) {
                         this.cpro.remove(this.command);
                         executionResultStr = "";
-                    } else if (this.request.charAt(0) == 'd') {
+                    } else if (this.request.compareTo("d") == 0) {
                         this.cpro.setDone(this.command);
                         executionResultStr = "";
                     }

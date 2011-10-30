@@ -1,5 +1,6 @@
 package w10j1.tandem.commandparser.api;
 
+import java.text.ParseException;
 import java.util.Calendar;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Calendar;
  */
 public interface CommandParser {
 
-    void processDue();
+    void processDue() throws ParseException;
 
     void readRawInput(String input);
 

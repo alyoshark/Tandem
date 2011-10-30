@@ -7,6 +7,7 @@
             <suite-component/>
             <module-dependencies/>
             <public-packages>
+                <package>w10j1.tandem.task</package>
                 <package>w10j1.tandem.task.api</package>
             </public-packages>
         </data>

@@ -1,8 +1,0 @@
-||:CommandParserImplTest
-java.lang.Object
-java.lang.String
-org.junit.Assert
-w10j1.tandem.commandparser.CommandParserImpl
-java.lang.System
-java.io.PrintStream
-CommandParserImplTest

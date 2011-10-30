@@ -4,7 +4,7 @@
  */
 
 /*
- * TaskEditorPanel.java
+ * TaskEditorFrame.java
  *
  * Created on Oct 27, 2011, 1:07:41 AM
  */
@@ -14,26 +14,27 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import w10j1.tandem.usercommand.UserCommand;
+
 /**
  *
  * @author WIN7
  */
-public class TaskEditorPanel extends javax.swing.JFrame {
+public class TaskEditorFrame extends javax.swing.JFrame {
 
     private String inputStr;
     private String outputStr;
         
     private UserCommand userCommand;
-            
-    /** Creates new form TaskEditorPanel */
-    public TaskEditorPanel() {
+
+    /** Creates new form TaskEditorFrame */
+    public TaskEditorFrame() {
         initComponents();
         ResultTextArea.setEditable(false);
         inputStr = outputStr = "";
     }
 
     private String getDate(){
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date date = new Date();
         return dateFormat.format(date);
     }
@@ -73,6 +74,7 @@ public class TaskEditorPanel extends javax.swing.JFrame {
 
         InputTextField.setToolTipText("");
         InputTextField.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputTextFieldActionPerformed(evt);
             }
@@ -142,22 +144,17 @@ public class TaskEditorPanel extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaskEditorPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TaskEditorFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
-                new TaskEditorPanel().setVisible(true);
+                new TaskEditorFrame().setVisible(true);
             }
         });
     }

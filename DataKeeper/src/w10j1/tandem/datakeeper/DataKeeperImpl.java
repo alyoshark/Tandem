@@ -25,6 +25,9 @@ public class DataKeeperImpl implements DataKeeper {
 
     public ArrayList<Task> taskList;
     public ArrayList<Task> searchList;
+    private Task tempTask;
+    private enum undoState { NULL, ADD, DEL };
+    private undoState rollBack = undoState.NULL;
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
     public DataKeeperImpl() {
@@ -92,7 +95,9 @@ public class DataKeeperImpl implements DataKeeper {
 
     @Override
     public void addTask(Task task) {
+        this.tempTask = task;
         taskList.add(task);
+        rollBack = undoState.ADD;
     }
 
     @Override
@@ -124,7 +129,23 @@ public class DataKeeperImpl implements DataKeeper {
 
     @Override
     public void removeTask(Task task) {
-        searchList.remove(task);
+        tempTask = task;
         taskList.remove(task);
+        rollBack = undoState.DEL;
+    }
+    
+    @Override
+    public void undo() {
+        switch (rollBack) {
+            case NULL:
+                return;
+            case ADD:
+                this.removeTask(tempTask);
+                rollBack = undoState.NULL;
+            case DEL:
+                this.addTask(tempTask);
+                rollBack = undoState.NULL;
+        }
+        assert(rollBack == undoState.NULL);
     }
 }
