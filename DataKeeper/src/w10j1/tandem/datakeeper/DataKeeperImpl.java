@@ -23,8 +23,8 @@ import w10j1.tandem.task.api.Task;
  */
 public class DataKeeperImpl implements DataKeeper {
 
-    public ArrayList<Task> taskList;
-    public ArrayList<Task> searchList;
+    public ArrayList<Task> taskList = new ArrayList<Task>();
+    public ArrayList<Task> searchList = new ArrayList<Task>();
     private Task tempTask;
     private enum undoState { NULL, ADD, DEL };
     private undoState rollBack = undoState.NULL;
@@ -86,6 +86,8 @@ public class DataKeeperImpl implements DataKeeper {
 
     @Override
     public String resultString() {
+        assert(searchList != null);
+        assert(searchList.size() >= 0);
         StringBuilder sb = new StringBuilder();
         for (Task t : searchList) {
             sb.append(t.getDesc()).append("\r\n");

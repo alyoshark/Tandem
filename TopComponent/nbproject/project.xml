@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.apisupport.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
-            <code-name-base>w10j1.tandem.taskeditor</code-name-base>
+            <code-name-base>w10j1.tandem.topcomponent</code-name-base>
             <suite-component/>
             <module-dependencies>
                 <dependency>
@@ -28,7 +28,7 @@
                     <build-prerequisite/>
                     <compile-dependency/>
                     <run-dependency>
-                        <specification-version>8.15.1</specification-version>
+                        <specification-version>8.17.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>

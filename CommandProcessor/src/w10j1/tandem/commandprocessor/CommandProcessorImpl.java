@@ -16,7 +16,16 @@ public class CommandProcessorImpl implements CommandProcessor {
 
     public FileOperator fo = new FileOperator();
     public DataKeeper dk = new DataKeeperImpl();
-    
+
+    public void CommandProcessorImpl() {
+        this.fo.createFile();
+        String dataFromFile = this.fo.readFile();
+        if (dataFromFile.isEmpty()) {
+            return;
+        }
+        this.dk.fileToMem(fo.readFile());
+    }
+
     @Override
     public void add(Task task) {
         this.dk.addTask(task);
@@ -25,17 +34,18 @@ public class CommandProcessorImpl implements CommandProcessor {
     }
 
     @Override
-    public void search(String command) {
+    public String search(String command) {
         try {
             Span interval = Chronic.parse(command);
             dk.searchTask(interval);
+            return dk.resultString();
         } catch (Exception e0) {
-            // Not a processible as an interval.
-        }
-        try {
-            dk.searchTask(command);
-        } catch (Exception e1) {
-            throw e1;
+            try {
+                dk.searchTask(command);
+                return dk.resultString();
+            } catch (Exception e1) {
+                throw e0;
+            }
         }
     }
 
@@ -58,5 +68,10 @@ public class CommandProcessorImpl implements CommandProcessor {
     public void undo() {
         dk.undo();
         fo.writeFile(dk.memToFile());
+    }
+
+    @Override
+    public DataKeeper getDataKeeper() {
+        return this.dk;
     }
 }

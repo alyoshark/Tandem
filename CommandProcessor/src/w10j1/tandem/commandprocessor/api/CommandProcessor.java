@@ -1,5 +1,7 @@
 package w10j1.tandem.commandprocessor.api;
 
+import java.util.ArrayList;
+import w10j1.tandem.datakeeper.api.DataKeeper;
 import w10j1.tandem.task.api.Task;
 
 /**
@@ -10,7 +12,7 @@ public interface CommandProcessor {
 
     public void add(Task task);
 
-    public void search(String command);
+    public String search(String command);
 
     public void edit(String command);
 
@@ -19,5 +21,7 @@ public interface CommandProcessor {
     public void setDone(String command);
 
     public void undo();
+    
+    public DataKeeper getDataKeeper();
     
 }

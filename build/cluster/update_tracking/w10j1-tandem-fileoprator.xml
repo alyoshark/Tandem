@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="w10j1.tandem.fileoprator">
-    <module_version install_time="1319958728745" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1320007909471" last="true" origin="installer" specification_version="1.0">
         <file crc="733474128" name="config/Modules/w10j1-tandem-fileoprator.xml"/>
-        <file crc="3175539397" name="modules/w10j1-tandem-fileoprator.jar"/>
+        <file crc="1071619784" name="modules/w10j1-tandem-fileoprator.jar"/>
     </module_version>
 </module>

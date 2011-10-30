@@ -49,6 +49,7 @@ public class TaskImpl implements Task {
 
     @Override
     public Calendar getDue() {
+        assert(this.due != null);
         return this.due;
     }
 
@@ -66,13 +67,13 @@ public class TaskImpl implements Task {
     public void setStatus(boolean status) {
         this.status = status;
     }
+    
     @Override
     public void setDue(Calendar due) {
         Calendar old = this.due;
         this.due = due;
         this.pcs.firePropertyChange(PROP_DUE, old, due);
     }
-
 
     @Override
     public void setPriority(Priority priority) {
@@ -83,7 +84,7 @@ public class TaskImpl implements Task {
 
     @Override
     public String toString() {
-        return formatter.format(this.getDue()) + "|" + this.getDesc() /* + "|" + this.getPriority() +
+        return formatter.format(this.getDue().getTime()) + "|" + this.getDesc() /* + "|" + this.getPriority() +
                 "|" + (this.getStatus() ? "Done" : "Undone") */ + "\r\n";
     }
 
