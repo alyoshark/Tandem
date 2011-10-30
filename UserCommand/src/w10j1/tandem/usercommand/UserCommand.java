@@ -69,6 +69,8 @@ public class UserCommand {
                 if (executionResultStr.isEmpty()) {
                     executionResultStr = "No result found.";
                 }
+                isAfterSearch = true;
+                executionResultStr += "\r\nEnter d followed by an index to delete a task or else to go back";
                 break;
             case "u":
                 this.cpro.undo();

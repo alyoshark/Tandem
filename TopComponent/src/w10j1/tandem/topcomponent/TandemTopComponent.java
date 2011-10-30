@@ -111,6 +111,7 @@ public final class TandemTopComponent extends TopComponent {
             userCommand.execute();
             this.outputStr = userCommand.getExecutionResults();
             resultModel.addElement(this.outputStr);
+            InputTextField.setText("");
     }//GEN-LAST:event_InputTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

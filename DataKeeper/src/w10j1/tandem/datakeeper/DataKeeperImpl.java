@@ -90,7 +90,7 @@ public class DataKeeperImpl implements DataKeeper {
         assert(searchList.size() >= 0);
         StringBuilder sb = new StringBuilder();
         for (Task t : searchList) {
-            sb.append(t.getDesc()).append("\r\n");
+            sb.append(searchList.indexOf(t)).append(". ").append(t.toString()).append("\r\n");
         }
         return sb.toString();
     }
@@ -105,6 +105,7 @@ public class DataKeeperImpl implements DataKeeper {
     @Override
     public void searchTask(String keywords) {
         String[] kw = keywords.split("\\s");
+        searchList.clear();
         for (Task task : taskList) {
             boolean hasAllWords = true;
             for (String word : kw) {
@@ -121,6 +122,7 @@ public class DataKeeperImpl implements DataKeeper {
 
     @Override
     public void searchTask(Span interval) {
+        searchList.clear();
         for (Task task : taskList) {
             if (task.getDue().compareTo(interval.getBeginCalendar()) >= 0
                     && task.getDue().compareTo(interval.getEndCalendar()) <= 0) {
