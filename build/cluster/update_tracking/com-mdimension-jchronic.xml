@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="com.mdimension.jchronic">
-    <module_version install_time="1320007909210" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1320166768332" last="true" origin="installer" specification_version="1.0">
         <file crc="3247277957" name="config/Modules/com-mdimension-jchronic.xml"/>
-        <file crc="370939795" name="modules/com-mdimension-jchronic.jar"/>
+        <file crc="3013211872" name="modules/com-mdimension-jchronic.jar"/>
     </module_version>
 </module>

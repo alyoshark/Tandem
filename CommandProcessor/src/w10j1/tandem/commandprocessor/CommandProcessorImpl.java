@@ -17,7 +17,7 @@ public class CommandProcessorImpl implements CommandProcessor {
     public FileOperator fo = new FileOperator();
     public DataKeeper dk = new DataKeeperImpl();
 
-    public void CommandProcessorImpl() {
+    public CommandProcessorImpl() {
         this.fo.createFile();
         String dataFromFile = this.fo.readFile();
         if (dataFromFile.isEmpty()) {
